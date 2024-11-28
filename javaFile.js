@@ -3,22 +3,22 @@ let squareResolution = 0;
 const resizeButton = document.querySelector("#areaSize"); 
 resizeButton.addEventListener("click",()=>{
 let newSize = prompt("Insert any new square resolution below 100")
-if (newSize<=100){
-    const sketchArea = document.querySelector("#sketchArea"); 
+if (newSize<=100 && newSize!=null && newSize>0){
     deleteChild();  
     draw(newSize); 
 }
+else {
+    alert("Please enter a valid number"); 
+}
+
 }); 
 
 function deleteChild() {
-    let e = document.querySelector("div");
-
-    //e.firstElementChild can be used. 
-    let child = e.lastElementChild;
-    while (child) {
-        e.removeChild(child);
-        child = e.lastElementChild;
+    const sketchArea = document.querySelector("#sketchArea"); 
+    while(sketchArea.firstChild){
+        sketchArea.removeChild(sketchArea.firstChild); 
     }
+
 }
 
 
